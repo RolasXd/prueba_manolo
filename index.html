@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Contacto</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .invalid-feedback {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>Formulario de Atención del cliente </h2>
+    <form id="contactForm" action="procesar_formulario.php" method="post" novalidate>
+      <!-- Campo Nombre -->
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+        <div class="invalid-feedback">Por favor, ingrese su nombre.</div>
+      </div>
+
+      <!-- Campo Correo Electrónico -->
+      <div class="form-group">
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+        <div class="invalid-feedback">Por favor, ingrese un correo electrónico válido.</div>
+      </div>
+
+      <!-- Campo País -->
+      <div class="form-group">
+        <label for="pais">País:</label>
+        <select class="form-control" id="pais" name="pais" required>
+          <option value="">Seleccione su país</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Chile">Chile</option>
+          <option value="Colombia">Colombia</option>
+          <option value="España">España</option>
+          <option value="México">México</option>
+          <option value="Perú">Perú</option>
+          <!-- Puedes agregar más países -->
+        </select>
+        <div class="invalid-feedback">Por favor, seleccione su país.</div>
+      </div>
+
+      <!-- Campo Mensaje -->
+      <div class="form-group">
+        <label for="mensaje">Mensaje:</label>
+        <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+        <div class="invalid-feedback">Por favor, ingrese un mensaje.</div>
+      </div>
+
+      <!-- Botón Enviar -->
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </div>
+
+  <!-- Incluir Bootstrap JS y dependencias de JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Validación personalizada de Bootstrap con JavaScript -->
+  <script>
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Seleccionar el formulario
+        var form = document.getElementById('contactForm');
+        // Cuando se intenta enviar el formulario
+        form.addEventListener('submit', function(event) {
+          // Validar el formulario
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      }, false);
+    })();
+  </script>
+</body>
+
+</html>
